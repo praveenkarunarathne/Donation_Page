@@ -1,21 +1,261 @@
-<h2>Donate via Binance Pay</h2>
-<p>Send your donation to my Binance ID below:</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donate via Binance 💛</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0; padding: 0;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      background: linear-gradient(-45deg, #ffe0ec, #d5f4ff, #e1ffea, #fff3c4);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
 
-<div style="background:#f1f1f1;padding:15px;border-radius:10px;display:inline-block;">
-  <span id="binanceId" style="font-weight:bold;">123456789</span>
-  <button onclick="copyBinanceId()" style="margin-left:10px;padding:5px 10px;">Copy</button>
-</div>
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-<p id="copyMessage" style="color:green;display:none;margin-top:10px;">Copied to clipboard!</p>
+    /* Default: top align on mobile */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 10px 40px;
+      min-height: 100vh;
+    }
 
-<script>
-  function copyBinanceId() {
-    var text = document.getElementById("binanceId").innerText;
-    navigator.clipboard.writeText(text).then(function() {
-      document.getElementById("copyMessage").style.display = "block";
-      setTimeout(() => {
-        document.getElementById("copyMessage").style.display = "none";
-      }, 2000);
-    });
-  }
-</script>
+    /* Desktop: center vertically */
+    @media (min-width: 769px) {
+      body {
+        align-items: center;
+        padding: 0;
+      }
+    }
+
+    .donation-box {
+      max-width: 480px;
+      width: 100%;
+      background-color: #1a1a2e;
+      border-radius: 25px;
+      padding: 30px 25px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.1), 0 8px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: visible;
+      margin-bottom: 40px;
+    }
+
+    .donation-box::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      z-index: -1;
+      background: linear-gradient(135deg, #ff007a, #ffc400, #00ffcc);
+      border-radius: inherit;
+      filter: blur(25px);
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, #ffef8b, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 12px 0;
+      font-weight: 500;
+      color: #d0f0ff;
+      line-height: 1.5;
+    }
+
+    .highlight {
+      color: #00e1ff;
+      font-weight: 700;
+    }
+
+    .steps {
+      background-color: #101020;
+      border-radius: 15px;
+      padding: 20px 25px;
+      margin-top: 25px;
+      font-size: 1rem;
+      color: #d0f0ff;
+      line-height: 1.6;
+    }
+    .steps strong {
+      color: #ffef8b;
+      font-weight: 700;
+    }
+    .steps ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+    .steps ol li {
+      margin-bottom: 16px;
+    }
+    .steps ul {
+      padding-left: 20px;
+      margin-top: 8px;
+      list-style-type: disc;
+    }
+
+    .copy-id-box {
+      background: rgba(255, 255, 255, 0.07);
+      border: 2px solid #00eaff;
+      border-radius: 12px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: all;
+      margin-top: 12px;
+      box-shadow: 0 0 8px #00eaff88;
+      transition: box-shadow 0.3s ease;
+    }
+    .copy-id-box:hover,
+    .copy-id-box:focus-within {
+      box-shadow: 0 0 15px #00eaffcc;
+    }
+    .copy-id-box input {
+      background: transparent;
+      border: none;
+      color: #00eaff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: center;
+      outline: none;
+      cursor: text;
+    }
+    .copy-id-box button {
+      background: linear-gradient(135deg, #00bfff, #007fff);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      padding: 8px 14px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      margin-left: 14px;
+      user-select: none;
+    }
+    .copy-id-box button:hover,
+    .copy-id-box button:focus {
+      background: linear-gradient(135deg, #0080ff, #005fff);
+      outline: none;
+    }
+
+    .copied-msg {
+      color: #00ff80;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-top: 8px;
+      text-align: center;
+      display: none;
+      user-select: none;
+    }
+
+    .qr-code img {
+      width: 160px;
+      max-width: 100%;
+      border-radius: 12px;
+      border: 2px solid #ccc;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .qr-code img:hover,
+    .qr-code img:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    @media (max-width: 480px) {
+      .donation-box {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .copy-id-box input {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="donation-box w3-card-4" role="main" aria-label="Binance donation section">
+    <h1>💛 Wanna support my work?</h1>
+    <p>You can now donate via <span class="highlight">Binance Pay</span>!</p>
+
+    <div class="steps" aria-label="How to donate instructions">
+      <p><strong>How to Donate:</strong></p>
+      <ol>
+        <li>Open your <strong>Binance App</strong>.</li>
+        <li>Go to the <strong>“Pay”</strong> section.</li>
+        <li>Use either of these methods to add the recipient:
+          <ul>
+            <li>
+              Enter the Binance Account ID below.
+              <div class="copy-id-box" title="Click copy to copy Binance Account ID">
+                <input type="text" value="1124370229" id="binanceId" readonly aria-label="Binance Account ID to copy" />
+                <button onclick="copyBinanceId()" aria-describedby="copyMessage" aria-label="Copy Binance Account ID" type="button">📋 Copy</button>
+              </div>
+              <p class="copied-msg" id="copyMessage" role="alert" aria-live="assertive">✅ Copied to clipboard!</p>
+            </li>
+            <li>
+              Or scan the QR code below.
+              <div class="qr-code" aria-label="Binance donation QR code">
+                <img src="qr-code.png" alt="Binance QR Code" tabindex="0" />
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li>Enter the amount you want to donate.</li>
+        <li>Review the details and tap <strong>Send</strong> to complete the payment.</li>
+      </ol>
+    </div>
+
+    <p style="margin-top: 20px; text-align: center;">Every little bit helps me keep doing what I love. Thanks a ton! 😊</p>
+  </div>
+
+  <script>
+    function copyBinanceId() {
+      const input = document.getElementById("binanceId");
+      navigator.clipboard.writeText(input.value).then(() => {
+        const msg = document.getElementById("copyMessage");
+        msg.style.display = "block";
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 2000);
+      }).catch(() => {
+        alert("Failed to copy. Please copy manually.");
+      });
+    }
+  </script>
+
+</body>
+</html>
