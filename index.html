@@ -1,0 +1,21 @@
+<h2>Donate via Binance Pay</h2>
+<p>Send your donation to my Binance ID below:</p>
+
+<div style="background:#f1f1f1;padding:15px;border-radius:10px;display:inline-block;">
+  <span id="binanceId" style="font-weight:bold;">123456789</span>
+  <button onclick="copyBinanceId()" style="margin-left:10px;padding:5px 10px;">Copy</button>
+</div>
+
+<p id="copyMessage" style="color:green;display:none;margin-top:10px;">Copied to clipboard!</p>
+
+<script>
+  function copyBinanceId() {
+    var text = document.getElementById("binanceId").innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      document.getElementById("copyMessage").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("copyMessage").style.display = "none";
+      }, 2000);
+    });
+  }
+</script>
