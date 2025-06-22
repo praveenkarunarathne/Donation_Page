@@ -9,36 +9,23 @@
     html, body {
       height: 100%;
       margin: 0; padding: 0;
-      overflow-y: auto;
+      overflow-y: auto; /* Enable vertical scrolling */
       scroll-behavior: smooth;
       background: linear-gradient(-45deg, #ffe0ec, #d5f4ff, #e1ffea, #fff3c4);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align top to avoid clipping */
+      padding: 20px 10px 40px;
     }
 
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
-    }
-
-    /* Default: top align on mobile */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 20px 10px 40px;
-      min-height: 100vh;
-    }
-
-    /* Desktop: center vertically */
-    @media (min-width: 769px) {
-      body {
-        align-items: center;
-        padding: 0;
-      }
     }
 
     .donation-box {
